@@ -1,0 +1,2 @@
+0 Cloudy
+1 Not Cloudy
