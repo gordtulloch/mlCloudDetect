@@ -50,7 +50,6 @@ data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 cloudCount = clearCount = 0
 roofStatus="Roof Closed"
-lastRoofStatus="Roof Closed"
 
 while True:
 	# If the sun is up don't bother
@@ -101,7 +100,7 @@ while True:
 	#	continue
 
 	# Otherwise update Roof status
-	if (class_name[2:].replace('\n', '')=="Cloudy"):
+	if (class_name[2:].replace('\n', '')!="Clear"):
 		cloudCount +=1
 		if (cloudCount>=10):
 			roofStatus="Roof Closed"
@@ -109,7 +108,7 @@ while True:
 		elif (cloudCount < 10) and not(roofStatus=="Roof Closed"):
 			roofStatus="Close Pending"
 			clearCount=0
-	elif (class_name[2:].replace('\n', '')=="Clear"):
+	else:
 		clearCount+=1
 		if (clearCount>=10):
 			roofStatus="Roof Open"
@@ -118,11 +117,6 @@ while True:
 			cloudCount=0
 			roofStatus="Open Pending"
 
-	if (roofStatus != lastRoofStatus) and (roofStatus.find("Pending") == 0):
-		notifyUser(roofStatus)
-
-	lastRoofStatus=roofStatus
-			
 	f1=open("/usr/local/share/indi/scripts/roofStatus.txt","w")
 	f1.write(roofStatus+"\r\n"+class_name[2:].replace('\n', ''))
 	f1.close
