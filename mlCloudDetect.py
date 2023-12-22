@@ -22,10 +22,10 @@ def notifyUser(roofStatus):
 	# If status has changed send a text to the user
 	subject = "SPAO Roof Status Change"
 	body = roofStatus
-	sender = "gord.tulloch@gmail.com"
-	#recipients = ["2042661845@txt.bell.ca", "gord.tulloch@gmail.com"]
-	recipients = ["gord.tulloch@gmail.com"]
-	password = "evre tcxc tbua zifd"
+	sender = "spao@gmail.com"
+	#recipients = ["user@gmail.com"]
+	recipients = ["user@gmail.com"]
+	password = ""
 	send_email(subject, body, sender, recipients, password)
 	lastRoofStatus = roofStatus
 
