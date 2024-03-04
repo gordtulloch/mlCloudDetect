@@ -23,4 +23,4 @@ You need to get a jpg named latest.jpg from your allsky software into the mlClou
 
 In the INDI-Allsky software there's a program in the misc folder that will provide a path to the latest image in the database, so the easiest thing to do is add a line to your crontab (using crontab -e) in Linux as follows to update the image once a minute:
 
-* * * * * cp /var/www/html/allsky/`php /home/user/indi-allsky/makelatest.php` /home/user/mlCloudDetect/latest.jpg
+    * * * * * cp /var/www/html/allsky/`php /home/user/indi-allsky/makelatest.php` /home/user/mlCloudDetect/latest.jpg
