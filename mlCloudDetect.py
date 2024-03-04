@@ -29,11 +29,23 @@ def notifyUser(roofStatus):
 	send_email(subject, body, sender, recipients, password)
 	lastRoofStatus = roofStatus
 
+# Where are the files? The commented files are where I normally run them for INDI Weather Watcher etc. EDIT THIS
+latestFile='latest.jpg'
+#cloudsFile='/usr/local/share/indi/scripts/clouds.txt'
+cloudsFile='clouds.txt'
+#roofFile='/usr/local/share/indi/scripts/roofStatus.txt'
+roofFile='roofStatus.txt'
+#roofStatusFile="/usr/local/share/indi/scripts/roofStatus.txt"
+roofStatusFile='roofStatus.txt'
+cloudHistory='/usr/local/share/indi/scripts/cloudHistory.txt'
 
-# Set up lat and long so sun altitude can be calc'd
+# Set up lat and long so sun altitude can be calc'd EDIT THIS
 latitude=49.9
 longitude=-97.1
 
+#######################################################################################
+## DO NOT EDIT FROM HERE ON
+#######################################################################################
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
 
@@ -56,17 +68,17 @@ while True:
 	date = datetime.datetime.now(datetime.timezone.utc)
 	if (get_altitude(latitude, longitude, date) > -12.0):
 		print(date," Daytime skipping")
-		f = open("/usr/local/share/indi/scripts/clouds.txt","w")
+		f = open(cloudsFile,"w")
 		f.write("Daytime")
 		f.close()
-		f = open("/usr/local/share/indi/scripts/roofStatus.txt","w")
+		f = open(roofStatusFile,"w")	
 		f.write("Roof Closed")
 		f.close()
 		time.sleep(60)
 		continue
 	
 	# Replace this with the path to your image
-	image = Image.open("latest.jpg").convert("RGB")
+	image = Image.open(latestFile).convert("RGB")
 
 	# resizing the image to be at least 224x224 and then cropping from the center
 	size = (224, 224)
@@ -88,7 +100,7 @@ while True:
 	confidence_score = prediction[0][index]
 
 	# Update cloud status file
-	f=open("/usr/local/share/indi/scripts/clouds.txt","w")
+	f=open(cloudsFile,"w")
 	f.write(class_name[2:].replace('\n', '')+" ("+confidence_score.astype('str')+")")
 	f.close
 
@@ -113,17 +125,17 @@ while True:
 		if (clearCount>=10):
 			roofStatus="Roof Open"
 			cloudCount=0
-		elif (clearCount>0)  and not(roofStatus=="Roof Open"):
+		elif (clearCount>0) and not(roofStatus=="Roof Open"):
 			cloudCount=0
 			roofStatus="Open Pending"
 
-	f1=open("/usr/local/share/indi/scripts/roofStatus.txt","w")
+	f1=open(roofFile,"w")
 	f1.write(roofStatus+"\r\n"+class_name[2:].replace('\n', ''))
 	f1.close
 	print(roofStatus," -- ",date,class_name[2:].replace('\n', '')+" ("+confidence_score.astype('str')+")")
 
 	# Write a log to a weather history file for graphing
-	f2=open("/usr/local/share/indi/scripts/cloudHistory.txt","w")
+	f2=open(cloudHistory,"w")
 	f2.write(date.strftime("%m/%d/%Y, %H:%M:%S")+","+class_name[2:].replace('\n', ''))
 	f2.close
 
