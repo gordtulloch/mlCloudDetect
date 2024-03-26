@@ -25,7 +25,7 @@ In the INDI-Allsky software there's a program in the misc folder that will provi
     * * * * * cp /var/www/html/allsky/`php /home/user/indi-allsky/makelatest.php` /home/user/mlCloudDetect/latest.jpg
 
 ## Setting mlCloudDetect as a Linux service
-To set up mlCloudDetect as a service, install the following file into the folder ~/.config/systemd/user/cloudDetect.service:
+To set up mlCloudDetect as a service, ensure the mlCloudDetect file is executable and install the following file into the folder ~/.config/systemd/user/cloudDetect.service:
 
     [Unit]
     Description=Cloud Detection Service
@@ -33,7 +33,7 @@ To set up mlCloudDetect as a service, install the following file into the folder
  
     [Service]
     WorkingDirectory=/home/gtulloch/CloudDetect
-    ExecStart=/usr/bin/python /home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/gtulloch/CloudDetect/mlCloudDetect.log 2>>&1 
+    ExecStart=/home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/gtulloch/CloudDetect/mlCloudDetect.log 2>>&1 
     ExecReload=/bin/kill -HUP $MAINPID
     ExecStop=/bin/kill -TERM $MAINPID
     Restart=always
