@@ -22,5 +22,39 @@ To install and run mlCloudDetect create a Python virtual environment (to avoid v
 You need to get a jpg named latest.jpg from your allsky software into the mlCloudDetect folder or adjust the path of the program to point to it. With the Thomas Joquin software this file is created in /var/www/html/allsky/latest.jpg so edit the mlCloudDetect.py program to find the file there.
 
 In the INDI-Allsky software there's a program in the misc folder that will provide a path to the latest image in the database, so the easiest thing to do is add a line to your crontab (using crontab -e) in Linux as follows to update the image once a minute:
-
     * * * * * cp /var/www/html/allsky/`php /home/user/indi-allsky/makelatest.php` /home/user/mlCloudDetect/latest.jpg
+
+## Setting mlCloudDetect as a Linux service
+To set up mlCloudDetect as a service, install the following file into the folder ~/.config/systemd/user/cloudDetect.service:
+
+    [Unit]
+    Description=Cloud Detection Service
+    After=network.target indiserver.service indi-allsky.service
+ 
+    [Service]
+    WorkingDirectory=/home/gtulloch/CloudDetect
+    ExecStart=/usr/bin/python /home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/gtulloch/CloudDetect/mlCloudDetect.log 2>>&1 
+    ExecReload=/bin/kill -HUP $MAINPID
+    ExecStop=/bin/kill -TERM $MAINPID
+    Restart=always
+    user=youraccount
+    PrivateTmp=true
+    UMask=0022
+
+    [Install]
+    WantedBy=multi-user.target
+
+to enable execute the following commands:
+
+    $ systemctl --user enable cloudDetect
+    $ systemctl --user start cloudDetect
+    $ systemctl --user start cloudDetect
+
+Stop the service with:
+
+    $ systemctl --user stop cloudDetect
+
+    
+
+
+
