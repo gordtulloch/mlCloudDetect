@@ -1,8 +1,0 @@
-0 Aurora
-1 Clear
-2 Cloudy
-3 AuroraMoon
-4 Frost
-5 Overcast
-6 Snow
-7 Partly Cloudy
