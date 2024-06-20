@@ -6,29 +6,6 @@ import time
 from pysolar.solar import *
 import datetime
 import os.path
-import smtplib
-from email.mime.text import MIMEText
-
-# Set up email send
-def send_email(subject, body, sender, recipients, password):
-	msg = MIMEText(body)
-	msg['Subject'] = subject
-	msg['From'] = sender
-	msg['To'] = ', '.join(recipients)
-	with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
-		smtp_server.login(sender, password)
-		smtp_server.sendmail(sender, recipients, msg.as_string())
-
-def notifyUser(roofStatus):
-	# If status has changed send a text to the user
-	subject = "SPAO Roof Status Change"
-	body = roofStatus
-	sender = "spao@gmail.com"
-	#recipients = ["user@gmail.com"]
-	recipients = ["user@gmail.com"]
-	password = ""
-	send_email(subject, body, sender, recipients, password)
-	lastRoofStatus = roofStatus
 
 # Where are the files? The commented files are where I normally run them for INDI Weather Watcher etc. EDIT THIS
 latestFile='latest.jpg'
@@ -104,13 +81,6 @@ while True:
 	f=open(cloudsFile,"w")
 	f.write(class_name[2:].replace('\n', '')+" ("+confidence_score.astype('str')+")")
 	f.close
-
-	# If there is a SAFEMODE then we're closed
-	#if (os.path.isfile("/usr/local/share/indi/scripts/SAFEMODE")):
-	#	roofStatus="Roof Closed"
-	#	f.write(roofStatus)
-	#	f.close
-	#	continue
 
 	# Otherwise update Roof status
 	if (class_name[2:].replace('\n', '')!="Clear"):
