@@ -1,2 +1,7 @@
+<<<<<<< HEAD
+0 Clear
+1 Cloudy
+=======
 1 Clear
 2 Cloudy
+>>>>>>> 84673e7d465bd6933b55236bb0a093c22f41c701
