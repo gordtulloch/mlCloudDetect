@@ -6,20 +6,37 @@ import time
 from pysolar.solar import *
 import datetime
 import os.path
+import sys
+import warnings
 
-# Where are the files? The commented files are where I normally run them for INDI Weather Watcher etc. EDIT THIS
-latestFile='latest.jpg'
-#cloudsFile='/usr/local/share/indi/scripts/clouds.txt'
+warnings.filterwarnings("ignore")
+
+# Where are the files? 
 cloudsFile='clouds.txt'
-#roofFile='/usr/local/share/indi/scripts/roofStatus.txt'
-roofFile='roofStatus.txt'
-#roofStatusFile="/usr/local/share/indi/scripts/roofStatus.txt"
 roofStatusFile='roofStatus.txt'
-cloudHistory='/usr/local/share/indi/scripts/cloudHistory.txt'
+cloudHistory='cloudHistory.txt'
 
-# Set up lat and long so sun altitude can be calc'd EDIT THIS
-latitude=49.9
-longitude=-97.1
+# Provide usage if no parameters provided
+if (len(sys.argv)==1):
+	print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/17")
+	print ("Usage: mlCloudDetect <lat> <long> <pending> <imagefile> where lat is your latitude, long is your longitude, pending is")
+	print ("how many minutes to go into pending mode before a roof open/close, and imagefile is the image of the sky to process.")
+	sys.exit(0)
+
+latestFile=sys.argv[4]
+
+# Set up lat and long so sun altitude can be calc'd
+latitude=float(sys.argv[1])
+longitude=float(sys.argv[2])
+if (latitude==0):
+	latitude=49.9
+if (longitude==0):
+	longitude=-97.1
+
+# Set timeframe to set roof operations pending
+pendingCount=int(sys.argv[3])
+if (pendingCount==0):
+	pendingCount=10
 
 #######################################################################################
 ## DO NOT EDIT FROM HERE ON
@@ -85,7 +102,7 @@ while True:
 	# Otherwise update Roof status
 	if (class_name[2:].replace('\n', '')!="Clear"):
 		cloudCount +=1
-		if (cloudCount>=10):
+		if (cloudCount>=pendingCount):
 			roofStatus="Roof Closed"
 			clearCount=0
 		elif (cloudCount < 10) and not(roofStatus=="Roof Closed"):
@@ -93,14 +110,14 @@ while True:
 			clearCount=0
 	else:
 		clearCount+=1
-		if (clearCount>=10):
+		if (clearCount>=pendingCount):
 			roofStatus="Roof Open"
 			cloudCount=0
 		elif (clearCount>0) and not(roofStatus=="Roof Open"):
 			cloudCount=0
 			roofStatus="Open Pending"
 
-	f1=open(roofFile,"w")
+	f1=open(roofStatusFile,"w")
 	f1.write(roofStatus+"\r\n"+class_name[2:].replace('\n', ''))
 	f1.close
 	print(roofStatus," -- ",date,class_name[2:].replace('\n', '')+" ("+confidence_score.astype('str')+")")

@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# Created files
+roofStatus.txt
+clouds.txt
+cloudHistory.txt
+
 # Distribution / packaging
 .Python
 build/
