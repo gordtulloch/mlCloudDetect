@@ -11,6 +11,9 @@ roofStatus.txt
 clouds.txt
 cloudHistory.txt
 
+# Windows executables
+*.exe
+
 # Distribution / packaging
 .Python
 build/
