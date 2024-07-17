@@ -33,7 +33,7 @@ In the INDI-Allsky software there's a program in the misc folder that will provi
     * * * * * cp /var/www/html/allsky/`php /home/user/indi-allsky/makelatest.php` /home/user/mlCloudDetect/latest.jpg
 
 ## Running mlCloudDetect under Windows
-There are issues with Tesnorflow and Keras on Windows in current versions of Python as of this writing (version 3.12.4) so running under Windows requires a previous version of Python. Version 3.8.x has been testing using Tensorflow 3.11. There has been an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
+There are issues with Tensorflow and Keras on Windows in current versions of Python as of this writing (version 3.12.4) so running under Windows requires a previous version of Python. Version 3.8.x has been testing using Tensorflow 3.11. There has been an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
 
 https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=EClepg
 
