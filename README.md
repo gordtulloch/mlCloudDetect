@@ -11,7 +11,7 @@ Derived from a script provided at https://teachablemachine.withgoogle.com with s
 
 The code was recently modified to run as a Windows exe so all of the previously editable parameters in the script were made command line parameters. needs to be called with the following:
 
-mlCloudDetect.exe <lat> <long> <pending> <imagefile>
+mlCloudDetect <lat> <long> <pending> <imagefile>
 
 where lat and long are your latitude and longitude, pending is the number of minutes you want to delay between opening and closing your roof, and imagefile is the latest image file for your allsky cam.So for example at my location:
 
