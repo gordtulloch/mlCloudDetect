@@ -22,7 +22,8 @@ logger = logging.getLogger("mcpClouds")
 
 KERAS_MODEL = 'keras_model.h5'
 
-# derived from indi-allsky by Aaron Morris https://github.com/aaronwmorris/indi-allsky.git thanks Aaron!
+# OO version derived from indi-allsky by Aaron Morris https://github.com/aaronwmorris/indi-allsky.git thanks Aaron!
+# Original derived from Google Teaching Machine output
 
 class McpClouds(object):
     CLASS_NAMES = (
