@@ -1,7 +1,10 @@
-﻿keras
+astropy
+keras
 numpy
-Pillow
+pillow
 pysolar
 pytz
 requests
+scikit-image
+scipy
 tensorflow

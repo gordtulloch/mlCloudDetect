@@ -1,7 +1,11 @@
 # mlCloudDetect
 Cloud Detection using AllSky Cameras
 
-Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Runs in Python 3.
+Releases:
+* Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
+* Version 1.0.0 (in development) will include a Keras V3 model generation script and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini.
+
+Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. 
 
 Derived from a script provided at https://teachablemachine.withgoogle.com with some additions:
 * Determines if the sun is low enough (astronomical twilight) to bother running the model to detect clouds.
@@ -9,6 +13,7 @@ Derived from a script provided at https://teachablemachine.withgoogle.com with s
 * Writes out a status file (roofStatus.txt) used by the Allskycam software to display current roof condition
 * Writes out a cloudHistory file for later analysis (cloudHistory.txt)
 
+## Version 0.9.0 Parameters
 The code was recently modified to run as a Windows exe so all of the previously editable parameters in the script were made command line parameters. needs to be called with the following:
 
 mlCloudDetect <lat> <long> <pending> <imagefile>
@@ -17,10 +22,10 @@ where lat and long are your latitude and longitude, pending is the number of min
 
 mlCloudDetect 49.9 -97.1 10 latest.jpg
 
+## Virtual Environments
 To install and run mlCloudDetect in Python create a Python virtual environment (to avoid various package conflicts) and run the application from a terminal window.
 
-    python3 -m venv .venv
-
+    python3 -m venv .venv             # Note that if the correct Python version is not the only one installed you should specify the version eg python3.8
     source ./venv/bin/activate        # in Linux, do this every time you run the program to set up the virtual environment
     .venv\scripts\activate.bat        # in Windows
 
@@ -47,8 +52,8 @@ To set up mlCloudDetect as a service, ensure the mlCloudDetect file is executabl
     After=network.target indiserver.service indi-allsky.service
  
     [Service]
-    WorkingDirectory=/home/gtulloch/CloudDetect
-    ExecStart=/home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/gtulloch/CloudDetect/mlCloudDetect.log 2>>&1 
+    WorkingDirectory=/home/<user>/CloudDetect
+    ExecStart=/home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/<user>>/CloudDetect/mlCloudDetect.log 2>>&1 
     ExecReload=/bin/kill -HUP $MAINPID
     ExecStop=/bin/kill -TERM $MAINPID
     Restart=always
