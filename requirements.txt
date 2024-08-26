@@ -4,8 +4,9 @@ numpy
 pillow
 pysolar
 pytz⌈
-requests
+requests⌈
 scikit-image
 scipy
 tensorflow
-matplotlib⌈
+matplotlib
+opencv-python⌈
