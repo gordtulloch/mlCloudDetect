@@ -81,7 +81,7 @@ while True:
 
 	# Write a log to a weather history file for graphing
 	f2=open(cloudHistory,"w")
-	f2.write(date.strftime("%m/%d/%Y, %H:%M:%S")+","+class_name[2:].replace('\n', ''))
+	f2.write(date.strftime("%m/%d/%Y, %H:%M:%S")+","+result.replace('\n', ''))
 	f2.close
 
 	time.sleep(60)

@@ -3,10 +3,10 @@ keras
 numpy
 pillow
 pysolar
-pytz⌈
-requests⌈
+pytz
+requests
 scikit-image
 scipy
 tensorflow
 matplotlib
-opencv-python⌈
+opencv-python
