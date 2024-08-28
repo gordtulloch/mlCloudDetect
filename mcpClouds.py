@@ -20,8 +20,6 @@ sys.path.append(str(Path(__file__).parent.absolute().parent))
 
 logger = logging.getLogger("mcpClouds")
 
-KERAS_MODEL = 'keras_model.h5'
-
 # OO version derived from indi-allsky by Aaron Morris https://github.com/aaronwmorris/indi-allsky.git thanks Aaron!
 # Original derived from Google Teaching Machine output
 
@@ -33,12 +31,10 @@ class McpClouds(object):
     
     def __init__(self):
         self.config = config
-
+        logger.info('Using keras model: %s', config.get("KERASMODEL"))
+        self.model = keras.models.load_model(config.get("KERASMODEL"), compile=False)
 
     def isCloudy(self,allSkyOutput=False):
-        logger.info('Using keras model: %s', KERAS_MODEL)
-        self.model = keras.models.load_model(KERAS_MODEL, compile=False)
-
         if (self.config.get("ALLSKYCAM") == "NONE"):
             logger.error('No allsky camera for cloud detection')
         else:
@@ -52,7 +48,7 @@ class McpClouds(object):
                     ' ORDER BY image.createDate DESC LIMIT 1'
                     logger.info('Running SQL Statement: '+sqlStmt)
                     cur.execute(sqlStmt)
-                    image_file=cur.fetchone()
+                    image_file='/var/www/html/allsky/images/'+cur.fetchone()[0]
                     conn.close()
                 except sqlite3.Error as e:
                     logger.error("SQLITE Error accessing indi-allsky "+str(e))
@@ -60,7 +56,6 @@ class McpClouds(object):
             else:
                 # Grab the image file from whereever
                 image_file = config.get("ALLSKY_IMAGE")
-        image_file='/var/www/html/allsky/images/'+image_file[0]
         logger.info('Loading image: %s', image_file)
 
         ### PIL
