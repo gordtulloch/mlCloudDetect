@@ -20,7 +20,7 @@ print ("trainMlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/1
 print ("Usage: trainMlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
 
 # Define where the images are. Two sub-dirs are Clear and Cloudy (note caps)
-dataDir='/home/stellarmate/allskyimages'
+dataDir=config.get('TRAINFOLDER')
 
 datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
 train_generator = datagen.flow_from_directory(

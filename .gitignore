@@ -10,6 +10,7 @@ __pycache__/
 roofStatus.txt
 clouds.txt
 cloudHistory.txt
+*.ini
 
 # Windows executables
 *.exe
