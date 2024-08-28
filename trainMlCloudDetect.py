@@ -2,6 +2,23 @@ import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Conv2D, Flatten, Dense, Dropout, MaxPooling2D
 
+# Set up logging
+import logging
+logFilename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mlCloudDetect.log')
+logger = logging.getLogger()
+fhandler = logging.FileHandler(filename=logFilename, mode='a')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fhandler.setFormatter(formatter)
+logger.addHandler(fhandler)
+
+# Provide usage if no parameters provided
+if os.name == 'nt':
+	_ = os.system('cls')
+else:
+	_ = os.system('clear')
+print ("trainMlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/17")
+print ("Usage: trainMlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
+
 # Define where the images are. Two sub-dirs are Clear and Cloudy (note caps)
 dataDir='/home/stellarmate/allskyimages'
 
