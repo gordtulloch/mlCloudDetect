@@ -3,7 +3,7 @@ Cloud Detection using AllSky Cameras
 
 Releases:
 * Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
-* Version 1.0.0 (in development) will include a Keras V3 model generation script and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini.
+* Version 1.0.0 (still in development) will include a Keras V3 model generation script and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini.
 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Runs in Python 3.8 currently as it requires Keras and Tensorflow 2.11 for the V2 Keras model produced by Teachable Machine. V1.0.0 (in development) will include a training script to solve this issue.
@@ -44,38 +44,3 @@ There are issues with Tensorflow and Keras on Windows in current versions of Pyt
 https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=EClepg
 
 You just need to stick the keras model and labels files in the same folder and run it.
-
-## Setting mlCloudDetect as a Linux service
-To set up mlCloudDetect as a service, ensure the mlCloudDetect file is executable and install the following file into the folder ~/.config/systemd/user/cloudDetect.service:
-
-    [Unit]
-    Description=Cloud Detection Service
-    After=network.target indiserver.service indi-allsky.service
- 
-    [Service]
-    WorkingDirectory=/home/<user>/CloudDetect
-    ExecStart=/home/gtulloch/CloudDetect/mlCloudDetect.py >> /home/<user>>/CloudDetect/mlCloudDetect.log 2>>&1 
-    ExecReload=/bin/kill -HUP $MAINPID
-    ExecStop=/bin/kill -TERM $MAINPID
-    Restart=always
-    user=youraccount
-    PrivateTmp=true
-    UMask=0022
-
-    [Install]
-    WantedBy=multi-user.target
-
-to enable execute the following commands:
-
-    $ systemctl --user enable cloudDetect
-    $ systemctl --user start cloudDetect
-    $ systemctl --user start cloudDetect
-
-Stop the service with:
-
-    $ systemctl --user stop cloudDetect
-
-    
-
-
-
