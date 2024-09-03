@@ -10,11 +10,18 @@ import PIL
 from PIL import Image
 import logging
 import sqlite3
-import keras
 import os
 
 from mcpConfig import McpConfig
 config=McpConfig()
+
+logger = logging.getLogger("mcpClouds")
+
+# Suppress Tensorflow warnings
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+import keras
+logger.setLevel(logging.INFO)
 
 sys.path.append(str(Path(__file__).parent.absolute().parent))
 
