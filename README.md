@@ -5,7 +5,7 @@ NOTE: IN ACTIVE DEVELOPMENT SO IF YOU WANT TO USE THIS PROGRAM PLEASE USE V0.9.0
 
 Releases:
 * Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
-NOT YET RELEASED - Version 1.0.0 requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below).
+* NOT YET RELEASED - Version 1.0.0 requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below).
 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. The program should run in the current version of Python.
 
