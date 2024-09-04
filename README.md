@@ -48,6 +48,7 @@ Version 1.0.0 of the program moved all parameters into an INI file. Note that th
 The mlCloudDetect.ini file supports the following parameters:
 
 | Parameter | Default | Description |
+|-----------|--------------------------------------------------------|---------------------------------------------------------------------|
 | LATITUDE | 49.8954 | Latitude of observer |
 | LONGITUDE | -97.1385 | Longitude of observer (negative if West) |
 | ALLSKYCAM | INDI-ALLSKY | What kind of allskycam - choice are NONE,INDI-ALLSKY or something else (e.g. TJ) |
