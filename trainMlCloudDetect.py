@@ -19,7 +19,7 @@ if os.name == 'nt':
 	_ = os.system('cls')
 else:
 	_ = os.system('clear')
-print ("trainMlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/17")
+print ("trainMlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/09/04")
 print ("Usage: trainMlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
 
 VERSION='0.1'
