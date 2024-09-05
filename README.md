@@ -75,9 +75,7 @@ Version 0.9.0 (old Keras V2 model files)
 mlCloudDetect.0.9.0.exe [https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=EClepg](https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=kAGErY)
 
 also required:
-
 keras_model.h5    https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
-
 labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 Version 1.0.0
