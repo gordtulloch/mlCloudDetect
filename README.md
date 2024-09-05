@@ -4,16 +4,11 @@ Cloud Detection using AllSky Cameras
 NOTE: IN ACTIVE DEVELOPMENT SO IF YOU WANT TO USE THIS PROGRAM PLEASE USE V0.9.0 AS V1.0.0 IS STILL BEING DEUGGED
 
 Releases:
-* Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
 * NOT YET RELEASED - Version 1.0.0 requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below).
+* Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
 
-Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. The program should run in the current version of Python.
 
-Derived from a script provided at https://teachablemachine.withgoogle.com with some additions:
-* Determines if the sun is low enough (astronomical twilight) to bother running the model to detect clouds.
-* Writes out a status file (clouds.txt) that informs other scripts as to cloud status
-* Writes out a status file (roofStatus.txt) used by the Allskycam software to display current roof condition
-* Writes out a cloudHistory file for later analysis (cloudHistory.txt)
+Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Note that using the method in this article produces Keras V2 files so you need V0.9.0 of mlCloudDetect.
 
 ## Cloud detection model
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
@@ -81,19 +76,19 @@ You need to get a jpg named latest.jpg from your allsky software into the mlClou
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
 
 Version 0.9.0 (old Keras V2 model files)
-mlCloudDetect.0.9.0.exe    [https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=EClepg](https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=kAGErY)
-
+mlCloudDetect.0.9.0.exe [https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=EClepg](https://1drv.ms/u/s!AuTKPznBac46gphDwGPjozIPB4FvVw?e=kAGErY)
+also required:
+keras_model.h5    https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
+labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 Version 1.0.0
 
 
-
-You just need to stick the keras model and labels files in the same folder and run it.
-
-# Change Log
+## Release Log
 1.0.0   Milestone release - includes:
 * Object oriented code
 * training of new models to remove version dependency in Tensorflow/Keras using TeachingMachine to generate model
+* Labels file not required
 * Parameters now stored in INI file
 * Simplified output:
     * Cloud History removed
@@ -101,4 +96,9 @@ You just need to stick the keras model and labels files in the same folder and r
     * Allskycam.txt file removed
     * End user configurable output formerly roofStatus.txt
 
-0.9.0   Initial release - added parameters to enable use in Windows
+0.9.0   Initial release 
+* Parameters to enable use in Windows
+* Creates files with roofStatus.txt for whether the roof should be open or not
+* allskycam.txt for text to include in allskycam displays
+* cloudHistory.txt for cloud history
+
