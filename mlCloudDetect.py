@@ -55,8 +55,8 @@ roofStatus="Roof Closed"
 
 while True:
 	# If the sun is up don't bother
-	'''date = datetime.datetime.now(datetime.timezone.utc)
-	if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
+	date = datetime.datetime.now(datetime.timezone.utc)
+	'''if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
 		print(date," Daytime skipping")
 		f = open(roofStatusFile,"w")	
 		f.write("Roof Closed"+"\r\n"+"Daytime")
@@ -88,11 +88,5 @@ while True:
 	f1.write(roofStatus+"\r\n"+text)
 	f1.close
 	print(roofStatus," -- ",date,text)
-
-	# Write a log to a weather history file for graphing
-	if (config.get("CLOUDHISTORY"=="True")):
-		f2=open(cloudHistory,"w")
-		f2.write(date.strftime("%m/%d/%Y, %H:%M:%S")+","+result.replace('\n', ''))
-		f2.close
 
 	time.sleep(60)
