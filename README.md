@@ -68,6 +68,11 @@ To install and run mlCloudDetect in Python, create a Python virtual environment 
 
 You need to get a jpg named latest.jpg from your allsky software into the mlCloudDetect folder or adjust the path of the program to point to it in the ini file. With the Thomas Joquin software this file is created in /var/www/html/allsky/latest.jpg so edit the mlCloudDetect.py program to find the file there.  In the indi-allsky software mlCloudDetect will query the database for the correct file to analyze.
 
+## Updating in Python
+
+    cd mlCloudDetect
+    git pull
+
 ## Running mlCloudDetect under Windows 
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
 
