@@ -25,6 +25,7 @@ fhandler = logging.FileHandler(filename=logFilename, mode='a')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fhandler.setFormatter(formatter)
 logger.addHandler(fhandler)
+logger.info("Program Start - mlCloudDetect"+VERSION)
 
 # Where are the files? 
 roofStatusFile=config.get("STATUSFILE")
@@ -34,7 +35,7 @@ if os.name == 'nt':
 	_ = os.system('cls')
 else:
 	_ = os.system('clear')
-print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/17")
+print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com "+VERSION)
 print ("Usage: mlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
 
 latestFile=config.get("ALLSKYFILE")

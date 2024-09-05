@@ -13,6 +13,7 @@ __pycache__/
 roofStatus.txt
 clouds.txt
 cloudHistory.txt
+allskycam.txt
 *.ini
 
 # Windows executables

@@ -14,17 +14,16 @@ Please see the article at https://openastronomy.substack.com/p/detecting-clouds-
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
 
 Keras V2 sample model
-keras_model.h5    https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
-labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
+keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
+labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
-Keras  V3 sample model 
-https://1drv.ms/u/s!AuTKPznBac46gph3tMCqR540AAZUfg?e=LJXvH6
+Keras V3 sample model 
+mlCloudDetect.keras     https://1drv.ms/u/s!AuTKPznBac46gph3tMCqR540AAZUfg?e=LJXvH6
 
 I suggest that you create your own version of this file as soon as you can since I have trained the model based on images from my Bortle 8 sky, and you will likely have a different sky than mine. To train a new model:
 
-* Capture images from your All Sky Camera and put them into a training folder with two sub-folders - Clear and Cloudy
+* Capture sample images from your All Sky Camera and put them into a training folder with two sub-folders - Clear and Cloudy
 * Back up your existing mlCloudDetect.keras file somewhere safe.
-* Create a folder containing two sub-folders named Clear, and Cloudy.
 * Update mlCloudDetect.ini to set trainfolder to the location of your image folders e.g. C:/Users/myuser/Desktop/allskyimages/ (note the forward slashes if you are running Windows!)
 * Run the program trainMlCloudDetect.py (or the EXE file in Windows) which will create a new mlCloudDetect.keras file for you
 
@@ -85,16 +84,18 @@ Version 1.0.0
 
 
 ## Release Log
-1.0.0   Milestone release - includes:
+1.0.0   Milestone release
 * Object oriented code
 * training of new models to remove version dependency in Tensorflow/Keras using TeachingMachine to generate model
 * Labels file not required
 * Parameters now stored in INI file
+* mlCloudDetect.log includes detailed logging
 * Simplified output:
     * Cloud History removed
     * Cloud.txt file removed
     * Allskycam.txt file removed
     * End user configurable output formerly roofStatus.txt
+* Windows requirements harmonized with Python
 
 0.9.0   Initial release 
 * Parameters to enable use in Windows

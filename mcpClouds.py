@@ -44,6 +44,8 @@ class McpClouds(object):
     def isCloudy(self,allSkyOutput=False):
         if (self.config.get("ALLSKYCAM") == "NONE"):
             logger.error('No allsky camera for cloud detection')
+            print('ERROR: No allsky camera for cloud detection, exiting')
+            exit(0)
         else:
             if (self.config.get("ALLSKYCAM") == "INDI-ALLSKY"):
                 # Query the database for the latest file
@@ -59,6 +61,7 @@ class McpClouds(object):
                     conn.close()
                 except sqlite3.Error as e:
                     logger.error("SQLITE Error accessing indi-allsky "+str(e))
+                    print("SQLITE Error accessing indi-allsky "+str(e)+", exiting")
                     exit(0)
             else:
                 # Grab the image file from whereever
