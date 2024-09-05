@@ -45,7 +45,6 @@ The mlCloudDetect.ini file supports the following parameters:
 | ALLSKYCAM | INDI-ALLSKY | What kind of allskycam - choice are NONE,INDI-ALLSKY or something else (e.g. TJ) |
 | ALLSKYCAMNO | 1 | Determines what camera to pull the latest image from in indi-allsky |
 | ALLSKYFILE | /var/www/html/allsky/images/latest.jpg | What the latest file is called (in non-indi-allsky) |
-| ALLSKYOUTPUT | True | Dump an allskycam.txt file with cloud status |
 | PENDING | 10 | How long you want to wait to transition between open and closed (in minutes) |
 | TRAINFOLDER | /home/stellarmate/allskycam | Folder where training files are |
 | CLEARMSG | Roof Open | Message to output when no clouds |
