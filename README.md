@@ -33,7 +33,7 @@ where lat and long are your latitude and longitude, pending is the number of min
 
 mlCloudDetect 49.9 -97.1 10 latest.jpg
 
-Version 1.0.0 of the program moved all parameters into an INI file. Note that the ini file is created the first time you run the program so if it's not there, run the program.
+Version 1.0.0 of the program moved all parameters into an INI file. 
 
 ## INI File Parameters
 The mlCloudDetect.ini file supports the following parameters:
