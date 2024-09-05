@@ -11,6 +11,7 @@ Please see the article at https://openastronomy.substack.com/p/detecting-clouds-
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
 
 Keras V2 sample model
+
 keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
 labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
