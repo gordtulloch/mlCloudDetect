@@ -27,11 +27,11 @@ I suggest that you create your own version of this file as soon as you can since
 ## Version 0.9.0 Parameters (SUPERCEDED)
 This version of the program was modified to run as a Windows exe so all of the previously editable parameters in the script were made command line parameters. needs to be called with the following:
 
-mlCloudDetect <lat> <long> <pending> <imagefile>
+    mlCloudDetect lat long pending imagefile
 
 where lat and long are your latitude and longitude, pending is the number of minutes you want to delay between opening and closing your roof, and imagefile is the latest image file for your allsky cam.So for example at my location:
 
-mlCloudDetect 49.9 -97.1 10 latest.jpg
+    mlCloudDetect 49.9 -97.1 10 latest.jpg
 
 Version 1.0.0 of the program moved all parameters into an INI file. 
 
