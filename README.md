@@ -56,7 +56,6 @@ The mlCloudDetect.ini file supports the following parameters:
 | ALLSKYFILE | /var/www/html/allsky/images/latest.jpg | What the latest file is called (in non-indi-allsky) |
 | ALLSKYOUTPUT | True | Dump an allskycam.txt file with cloud status |
 | PENDING | 10 | How long you want to wait to transition between open and closed (in minutes) |
-| CLOUDHISTORY | True | Output Cloud History file |
 | TRAINFOLDER | /home/stellarmate/allskycam | Folder where training files are |
 | CLEARMSG | Roof Open | Message to output when no clouds |
 | CLOUDMSG | Roof Closed | Message to output when cloudy |
@@ -90,3 +89,15 @@ Version 1.0.0
 
 
 You just need to stick the keras model and labels files in the same folder and run it.
+
+# Change Log
+1.0.0   Milestone release - includes:
+* Object oriented code
+* training of new models to remove version dependency in Tensorflow/Keras using TeachingMachine to generate model
+* Parameters now stored in INI file
+* Simplified output:
+** Cloud History removed
+** Cloud.txt file removed
+** Allskycam.txt file removed
+** End user configurable output formerly roofStatus.txt
+0.9.0   Initial release - added parameters to enable use in Windows

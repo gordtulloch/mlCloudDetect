@@ -66,11 +66,6 @@ class McpClouds(object):
         logger.info('Loading image: %s', image_file)
 
         result=self.detect(image_file)
-        if (allSkyOutput):
-            filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'allskycam.txt')
-            f = open(filename, "w")
-            f.write(result)
-            f.close()
 
         return (result != 'Clear',result.replace('\n', ''))
 
