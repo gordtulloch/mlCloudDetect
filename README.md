@@ -96,8 +96,9 @@ You just need to stick the keras model and labels files in the same folder and r
 * training of new models to remove version dependency in Tensorflow/Keras using TeachingMachine to generate model
 * Parameters now stored in INI file
 * Simplified output:
-** Cloud History removed
-** Cloud.txt file removed
-** Allskycam.txt file removed
-** End user configurable output formerly roofStatus.txt
+    * Cloud History removed
+    * Cloud.txt file removed
+    * Allskycam.txt file removed
+    * End user configurable output formerly roofStatus.txt
+
 0.9.0   Initial release - added parameters to enable use in Windows
