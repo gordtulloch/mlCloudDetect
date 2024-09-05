@@ -25,8 +25,6 @@ logger.setLevel(logging.INFO)
 
 sys.path.append(str(Path(__file__).parent.absolute().parent))
 
-logger = logging.getLogger("mcpClouds")
-
 # OO version derived from indi-allsky by Aaron Morris https://github.com/aaronwmorris/indi-allsky.git thanks Aaron!
 # Original derived from Google Teaching Machine output
 
@@ -73,10 +71,6 @@ class McpClouds(object):
         return (result != 'Clear',result.replace('\n', ''))
 
     def detect(self, imagePath):
-        #thumbnail = cv2.resize(image, (224, 224))
-        #normalized_thumbnail = (thumbnail.astype(numpy.float32) / 127.5) - 1
-        #data = numpy.ndarray(shape=(1, 224, 224, 3), dtype=numpy.float32)
-        #data[0] = normalized_thumbnail
         # Load and preprocess the image
         image = Image.open(imagePath)
         image = image.resize((256, 256))
