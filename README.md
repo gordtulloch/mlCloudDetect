@@ -2,7 +2,7 @@
 Cloud Detection using AllSky Cameras
 
 Releases:
-* Version 1.0.0 requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below). I am still working on Windows EXE files for this release so the actual release will happen when they are working.
+* Version 1.0.0+ requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below). I am still working on Windows EXE files for this release so the actual release will happen when they are working.
 * Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Note that using the method in this article produces Keras V2 files so you need V0.9.0 of mlCloudDetect.
@@ -33,7 +33,7 @@ where lat and long are your latitude and longitude, pending is the number of min
 
     mlCloudDetect 49.9 -97.1 10 latest.jpg
 
-Version 1.0.0 of the program moved all parameters into an INI file. 
+Version 1.0.0+ of the program moved all parameters into an INI file. 
 
 ## INI File Parameters
 The mlCloudDetect.ini file supports the following parameters:
@@ -84,7 +84,8 @@ also required:
 * labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 Version 1.0.0
-(coming soon!)
+mlCloudDetect.1.0.0             https://1drv.ms/u/s!AuTKPznBac46gph_50chTGj1dKS1Nw?e=DCnptR
+trainMlCloudDetect.1.0.0.exe    https://1drv.ms/u/s!AuTKPznBac46gpkA_zD36PS0xB8OpQ?e=pzdUrZ
 
 ## Release Log
 1.0.0   Milestone release
