@@ -60,7 +60,7 @@ To install and run mlCloudDetect in Python, create a Python virtual environment 
     git clone https://github.com/gordtulloch/mlCloudDetect.git
     cd mlCloudDetect
     python3 -m venv .venv             # Note that if the correct Python version is not the only one installed you should specify the version eg python3.8
-    source .venv/bin/activate        # in Linux, do this every time you run the program to set up the virtual environment
+    source .venv/bin/activate        # in Linux
     .venv\scripts\activate.bat        # in Windows
 
     pip3 install -r requirements.txt
