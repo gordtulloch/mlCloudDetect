@@ -24,7 +24,7 @@ I suggest that you create your own version of this file as soon as you can since
 * Capture sample images from your All Sky Camera and put them into a training folder with two sub-folders - Clear and Cloudy
 * Back up your existing mlCloudDetect.keras file somewhere safe.
 * Update mlCloudDetect.ini to set trainfolder to the location of your image folders e.g. C:/Users/myuser/Desktop/allskyimages/ (note the forward slashes if you are running Windows!)
-* Run the program trainMlCloudDetect.py (or the EXE file in Windows) which will create a new mlCloudDetect.keras file for you
+* Run the program trainMlCloudDetect.py (or the EXE file in Windows) which will create a new mlCloudDetect.keras file for you. This program takes some time to run.
 
 ## Version 0.9.0 Parameters (SUPERCEDED)
 This version of the program was modified to run as a Windows exe so all of the previously editable parameters in the script were made command line parameters. needs to be called with the following:
