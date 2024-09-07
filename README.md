@@ -10,12 +10,12 @@ Please see the article at https://openastronomy.substack.com/p/detecting-clouds-
 ## Cloud detection model
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
 
-Keras V2 sample model
-* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
-* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
-
 Keras V3 sample model 
 * mlCloudDetect.keras     https://1drv.ms/u/s!AuTKPznBac46gph3tMCqR540AAZUfg?e=LJXvH6
+
+Keras V2 sample model (for the old version 0.9.0)
+* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
+* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 I suggest that you create your own version of this file as soon as you can since I have trained the model based on images from my Bortle 8 sky, and you will likely have a different sky than mine. To train a new model:
 
