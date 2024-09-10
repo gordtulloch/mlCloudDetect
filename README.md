@@ -86,8 +86,8 @@ also required:
 * labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 Version 1.0.0
-mlCloudDetect.1.0.0             https://1drv.ms/u/s!AuTKPznBac46gph_50chTGj1dKS1Nw?e=DCnptR
-trainMlCloudDetect.1.0.0.exe    https://1drv.ms/u/s!AuTKPznBac46gpkA_zD36PS0xB8OpQ?e=pzdUrZ
+* mlCloudDetect.1.0.0.exe             https://1drv.ms/u/s!AuTKPznBac46gph_50chTGj1dKS1Nw?e=DCnptR
+* trainMlCloudDetect.1.0.0.exe    https://1drv.ms/u/s!AuTKPznBac46gpkA_zD36PS0xB8OpQ?e=pzdUrZ
 
 ## Release Log
 1.0.0   Milestone release
