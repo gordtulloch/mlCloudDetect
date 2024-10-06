@@ -62,7 +62,7 @@ class McpClouds(object):
                     print("SQLITE Error accessing indi-allsky "+str(e)+", exiting")
                     exit(0)
             else:
-                # Grab the image file from whereever
+                # Grab the image file from whereever 
                 image_file = config.get("ALLSKYFILE")
         logger.info('Loading image: %s', image_file)
 
