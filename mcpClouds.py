@@ -39,7 +39,7 @@ class McpClouds(object):
         logger.info('Using keras model: %s', config.get("KERASMODEL"))
         self.model = keras.models.load_model(config.get("KERASMODEL"), compile=False)
 
-    def isCloudy(self,allSkyOutput=False):
+    def isCloudy(self):
         if (self.config.get("ALLSKYCAM") == "NONE"):
             logger.error('No allsky camera for cloud detection')
             print('ERROR: No allsky camera for cloud detection, exiting')

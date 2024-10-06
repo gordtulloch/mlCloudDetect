@@ -1,8 +1,10 @@
 # mlCloudDetect
-Cloud Detection using AllSky Cameras
+Cloud Detection using AllSky Cameras. This software will examine images from any allsky camera that can produce an image on disk at a known location. For indi-allsky, the software will load the latest image location from the database. Using Machine Learning, the software compares the most recent image with it's training model to produce a file that will tell you whether the sky is cloudy or clear. For observatories that means open the roof or not. The software also supports pending states where it will delay opening or closing so the observatory isn't constantly opening and closing all night! All messages and configuration is set using an INI file. Also included is a program to train a new model based on your images from your allskycam. Just capture JPG images from your camera into a folder with two sub-folders Clear and Cloudy with the appropriate images in them, and the code will train a new model specific to your sky conditions. This is especially important for dark sky sites where clouds are usually dark, not lit up by lights in my Bortle 8 location.
+
+Requires Python >= 3.10 if not using Windows executables.
 
 Releases:
-* Version 1.0.0 requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below). I am still working on Windows EXE files for this release so the actual release will happen when they are working.
+* Version 1.0.0+ requires a Keras V3 model and will run in any version of Python. It takes no parameters but uses a config file mlCloudDetect.ini (see below). 
 * Version 0.9.0 requires Python 3.8 and Keras/Tensorflow 2.11 to support V2 keras model files like those created by Teachable Machine. It requires command line parameters. Run the program without parameters to see usage or see below.
 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Note that using the method in this article produces Keras V2 files so you need V0.9.0 of mlCloudDetect.
@@ -10,30 +12,30 @@ Please see the article at https://openastronomy.substack.com/p/detecting-clouds-
 ## Cloud detection model
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
 
-Keras V2 sample model
-* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
-* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
-
 Keras V3 sample model 
 * mlCloudDetect.keras     https://1drv.ms/u/s!AuTKPznBac46gph3tMCqR540AAZUfg?e=LJXvH6
+
+Keras V2 sample model (for the old version 0.9.0)
+* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gph4fPUqaRl3XOoHbA?e=GLdplP
+* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 I suggest that you create your own version of this file as soon as you can since I have trained the model based on images from my Bortle 8 sky, and you will likely have a different sky than mine. To train a new model:
 
 * Capture sample images from your All Sky Camera and put them into a training folder with two sub-folders - Clear and Cloudy
 * Back up your existing mlCloudDetect.keras file somewhere safe.
 * Update mlCloudDetect.ini to set trainfolder to the location of your image folders e.g. C:/Users/myuser/Desktop/allskyimages/ (note the forward slashes if you are running Windows!)
-* Run the program trainMlCloudDetect.py (or the EXE file in Windows) which will create a new mlCloudDetect.keras file for you
+* Run the program trainMlCloudDetect.py (or the EXE file in Windows) which will create a new mlCloudDetect.keras file for you. This program takes some time to run.
 
 ## Version 0.9.0 Parameters (SUPERCEDED)
 This version of the program was modified to run as a Windows exe so all of the previously editable parameters in the script were made command line parameters. needs to be called with the following:
 
-mlCloudDetect <lat> <long> <pending> <imagefile>
+    mlCloudDetect lat long pending imagefile
 
 where lat and long are your latitude and longitude, pending is the number of minutes you want to delay between opening and closing your roof, and imagefile is the latest image file for your allsky cam.So for example at my location:
 
-mlCloudDetect 49.9 -97.1 10 latest.jpg
+    mlCloudDetect 49.9 -97.1 10 latest.jpg
 
-Version 1.0.0 of the program moved all parameters into an INI file. 
+Version 1.0.0+ of the program moved all parameters into an INI file. 
 
 ## INI File Parameters
 The mlCloudDetect.ini file supports the following parameters:
@@ -59,8 +61,8 @@ To install and run mlCloudDetect in Python, create a Python virtual environment 
 
     git clone https://github.com/gordtulloch/mlCloudDetect.git
     cd mlCloudDetect
-    python3 -m venv .venv             # Note that if the correct Python version is not the only one installed you should specify the version eg python3.8
-    source .venv/bin/activate        # in Linux, do this every time you run the program to set up the virtual environment
+    python3 -m venv .venv           
+    source .venv/bin/activate        # in Linux
     .venv\scripts\activate.bat        # in Windows
 
     pip3 install -r requirements.txt
@@ -84,7 +86,8 @@ also required:
 * labels.txt        https://1drv.ms/t/s!AuTKPznBac46gph6qOyVBYm_MSSsRw?e=tLrwUA
 
 Version 1.0.0
-(coming soon!)
+* mlCloudDetect.1.0.0.exe             https://1drv.ms/u/s!AuTKPznBac46gph_50chTGj1dKS1Nw?e=DCnptR
+* trainMlCloudDetect.1.0.0.exe    https://1drv.ms/u/s!AuTKPznBac46gpkA_zD36PS0xB8OpQ?e=pzdUrZ
 
 ## Release Log
 1.0.0   Milestone release
