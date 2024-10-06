@@ -79,7 +79,7 @@ class McpClouds(object):
         detect_start = time.time()
 
         # Predicts the model
-        prediction = self.model.predict(image_array)
+        prediction = self.model.predict(image_array,verbose=0)
         idx = np.argmax(prediction)
         class_name = self.CLASS_NAMES[idx]
         confidence_score = (prediction[0][idx]).astype(np.float32)

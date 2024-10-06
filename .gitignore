@@ -15,6 +15,7 @@ clouds.txt
 cloudHistory.txt
 allskycam.txt
 latest.jpg
+*.ini
 
 # Windows executables
 *.exe

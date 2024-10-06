@@ -88,7 +88,7 @@ model.compile(optimizer='adam',
 history = model.fit(
     normalized_train_ds,
     validation_data=normalized_val_ds,
-    epochs=20
+    epochs=20,verbose=0
 )
 
 model.save('mlCloudDetect.keras')
