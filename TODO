@@ -1,0 +1,4 @@
+The following need to be added to this software:
+
+* Allow saving of every n images to a repository that can be used to train a new model (backport from obsy)
+

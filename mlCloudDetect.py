@@ -25,18 +25,18 @@ fhandler = logging.FileHandler(filename=logFilename, mode='a')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fhandler.setFormatter(formatter)
 logger.addHandler(fhandler)
+logger.info("Program Start - mlCloudDetect"+VERSION)
 logger.setLevel(logging.INFO)
 
 # Where are the files? 
-roofStatusFile='roofStatus.txt'
-cloudHistory='cloudHistory.txt'
+roofStatusFile=config.get("STATUSFILE")
 
 # Provide usage if no parameters provided
 if os.name == 'nt':
 	_ = os.system('cls')
 else:
 	_ = os.system('clear')
-print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com V1.0 2024/07/17")
+print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com "+VERSION)
 print ("Usage: mlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
 
 latestFile=config.get("ALLSKYFILE")
@@ -52,7 +52,7 @@ pendingCount=int(config.get("PENDING"))
 ## DO NOT EDIT FROM HERE ON
 #######################################################################################
 cloudCount = clearCount = 0
-roofStatus="Roof Closed"
+roofStatus="UNKNOWN"
 
 while True:
 	# If the sun is up don't bother
@@ -60,13 +60,13 @@ while True:
 	if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
 		print(date," Daytime skipping")
 		f = open(roofStatusFile,"w")	
-		f.write("Roof Closed"+"\r\n"+"Daytime")
+		f.write("Daytime")
 		f.close()
 		time.sleep(60)
 		continue
 	
 	# Call the clouds object to determine if it's cloudy
-	result,text=clouds.isCloudy(allSkyOutput=bool(config.get("ALLSKYOUTPUT")))
+	result,text=clouds.isCloudy()
 
 	if (result):
 		cloudCount +=1
@@ -89,11 +89,5 @@ while True:
 	f1.write(roofStatus+"\r\n"+text)
 	f1.close
 	print(roofStatus," -- ",date,text)
-
-	# Write a log to a weather history file for graphing
-	if (config.get("CLOUDHISTORY"=="True")):
-		f2=open(cloudHistory,"w")
-		f2.write(date.strftime("%m/%d/%Y, %H:%M:%S")+","+result.replace('\n', ''))
-		f2.close
 
 	time.sleep(60)
