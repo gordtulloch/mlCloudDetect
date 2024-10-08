@@ -4,6 +4,7 @@
 # Object to retrieve configuration
 import configparser
 import os
+
 import logging
 logger = logging.getLogger('mcpConfig')
 
