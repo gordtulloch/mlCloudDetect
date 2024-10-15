@@ -37,7 +37,6 @@ if os.name == 'nt':
 else:
 	_ = os.system('clear')
 print ("mlCloudDetect "+VERSION+" by Gord Tulloch https://github.com/gordtulloch/mlCloudDetect to report errors.")
-print ("Copyright (C) 2024 Gord Tulloch ALL RIGHTS RESERVED Released under GPL3" )
 latestFile=config.get("ALLSKYFILE")
 
 # Set up lat and long so sun altitude can be calc'd

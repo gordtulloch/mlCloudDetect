@@ -11,7 +11,7 @@ logger = logging.getLogger('mcpConfig')
 class McpConfig():
     def __init__(self):
         self.config = configparser.ConfigParser()
-        self.file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mlCloudDetect.ini)
+        self.file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mlCloudDetect.ini')
         # Check if the file exists
         if not os.path.exists(self.file_path):
             logger.info("Config file not found, creating with defaults.")
