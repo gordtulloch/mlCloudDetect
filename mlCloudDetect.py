@@ -10,7 +10,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 from mcpClouds import McpClouds
 clouds=McpClouds()
@@ -25,8 +25,8 @@ fhandler = logging.FileHandler(filename=logFilename, mode='a')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fhandler.setFormatter(formatter)
 logger.addHandler(fhandler)
-logger.info("Program Start - mlCloudDetect"+VERSION)
 logger.setLevel(logging.INFO)
+logger.info("Program Start - mlCloudDetect version "+VERSION)
 
 # Where are the files? 
 roofStatusFile=config.get("STATUSFILE")
@@ -36,9 +36,8 @@ if os.name == 'nt':
 	_ = os.system('cls')
 else:
 	_ = os.system('clear')
-print ("mlCloudDetect by Gord Tulloch gord.tulloch@gmail.com "+VERSION)
-print ("Usage: mlCloudDetect with no parameters. See mlCloudDetect.ini for input parameters")
-
+print ("mlCloudDetect "+VERSION+" by Gord Tulloch https://github.com/gordtulloch/mlCloudDetect to report errors.")
+print ("Copyright (C) 2024 Gord Tulloch ALL RIGHTS RESERVED Released under GPL3" )
 latestFile=config.get("ALLSKYFILE")
 
 # Set up lat and long so sun altitude can be calc'd
@@ -57,13 +56,13 @@ roofStatus="UNKNOWN"
 while True:
 	# If the sun is up don't bother
 	date = datetime.datetime.now(datetime.timezone.utc)
-	if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
-		print(date," Daytime skipping")
+	'''if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
+		logger.info("Daytime skipping")
 		f = open(roofStatusFile,"w")	
 		f.write("Daytime")
 		f.close()
 		time.sleep(60)
-		continue
+		continue '''
 	
 	# Call the clouds object to determine if it's cloudy
 	result,text=clouds.isCloudy()
@@ -85,9 +84,11 @@ while True:
 			cloudCount=0
 			roofStatus=config.get("CLEARPENDINGMSG")
 
+	logger.info("Roof Status: "+roofStatus)
+ 
 	f1=open(roofStatusFile,"w")
 	f1.write(roofStatus+"\r\n"+text)
 	f1.close
 	print(roofStatus," -- ",date,text)
 
-	time.sleep(60)
+	time.sleep(30)

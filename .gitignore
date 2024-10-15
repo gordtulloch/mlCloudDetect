@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Keras files (too big for Github)
+*.h5
+labels.txt
+
+# test data
+*.jpg
+*.config
+
 # C extensions
 *.so
 
