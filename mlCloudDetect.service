@@ -1,0 +1,14 @@
+[Unit]
+Description=mlCloudDetect Service
+After=network.target
+
+[Service]
+User=your_username
+Group=your_groupname
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=/home/gtulloch/mlCloudDetect
+ExecStart=/home/gtulloch/mlCloudDetect/.venv/bin/python /home/gtulloch/mlCloudDetect/mlCloudDetect.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

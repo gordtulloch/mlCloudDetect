@@ -71,7 +71,7 @@ This setup allows you to manage user-specific services without requiring root pr
 
 To run mlCloudDetect as a service under a Debian style Linux:
 
-    sudo nano ~/.config/systemd/user/mlCloudDetect.service
+    nano ~/.config/systemd/user/mlCloudDetect.service
 
 Enter the following into this file:
 
@@ -92,13 +92,13 @@ Enter the following into this file:
 
 Then use the following commands to enable and run your service.
 
-    sudo systemctl --user daemon-reload
-    sudo systemctl --user enable mlCloudDetect
-    sudo systemctl --user start mlCloudDetect
+    systemctl --user daemon-reload
+    systemctl --user enable mlCloudDetect
+    systemctl --user start mlCloudDetect
 
 Ensure your service is running as follows:
 
-    sudo systemctl --user status mlCloudDetect
+    systemctl --user status mlCloudDetect
 
 ## Running mlCloudDetect under Windows 
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
