@@ -95,6 +95,7 @@ Then use the following commands to enable and run your service.
     sudo systemctl start mlCloudDetect
 
 Ensure your service is running as follows:
+
     sudo systemctl status mlCloudDetect
 
 ## Running mlCloudDetect under Windows 
