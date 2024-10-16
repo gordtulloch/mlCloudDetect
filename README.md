@@ -56,11 +56,15 @@ The following instructions are for Ubuntu. You may need to adjust the package na
 You need to get a jpg named latest.jpg from your allsky software into the mlCloudDetect folder or adjust the path of the program to point to it in the ini file. With the Thomas Joquin software this file is created in /var/www/html/allsky/latest.jpg so edit the mlCloudDetect.py program to find the file there.  In the indi-allsky software mlCloudDetect will query the database for the correct file to analyze as long as it's on the same machine and using the default database option.
 
 ## Updating in Python
+To update your installation please do the following:
 
     cd mlCloudDetect
+    rm mlCloudDetect.ini 
     git pull
     source .venv/bin/activate
     pip3 install -r requirements.txt 
+
+A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
 
 ## Running mlCloudDetect under Windows 
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
