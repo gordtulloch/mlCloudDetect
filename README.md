@@ -67,9 +67,11 @@ To update your installation please do the following:
 A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
 
 ## Running as a service under Linux
+The `systemctl --user` configuration files are typically located in the user's home directory under the `.config/systemd/user` directory. Create a new service file in this directory. For example, to create a service named `my_service.service`, you would create a file at `~/.config/systemd/user/my_service.service`. This setup allows you to manage user-specific services without requiring root privileges.
+
 To run mlCloudDetect as a service under a Debian style Linux:
 
-    sudo nano /etc/systemd/system/mlCloudDetect.service
+    sudo nano ~/.config/systemd/user/mlCloudDetect.service
 
 Enter the following into this file:
 
@@ -90,13 +92,13 @@ Enter the following into this file:
 
 Then use the following commands to enable and run your service.
 
-    sudo systemctl daemon-reload
-    sudo systemctl enable mlCloudDetect
-    sudo systemctl start mlCloudDetect
+    sudo systemctl --user daemon-reload
+    sudo systemctl --user enable mlCloudDetect
+    sudo systemctl --user start mlCloudDetect
 
 Ensure your service is running as follows:
 
-    sudo systemctl status mlCloudDetect
+    sudo systemctl --user status mlCloudDetect
 
 ## Running mlCloudDetect under Windows 
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
