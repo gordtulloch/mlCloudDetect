@@ -1,6 +1,5 @@
 [Unit]
 Description=mlCloudDetect Service
-After=default.target
 
 [Service]
 User=your_username
@@ -11,4 +10,4 @@ ExecStart=/home/gtulloch/mlCloudDetect/.venv/bin/python /home/gtulloch/mlCloudDe
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
