@@ -66,6 +66,37 @@ To update your installation please do the following:
 
 A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
 
+## Running as a service under Linux
+To run mlCloudDetect as a service under a Debian style Linux:
+
+    sudo nano /etc/systemd/system/mlCloudDetect.service
+
+Enter the following into this file:
+
+    [Unit]
+    Description=mlCloudDetect Service
+    After=network.target
+
+    [Service]
+    User=your_username
+    Group=your_groupname
+    Environment=PYTHONUNBUFFERED=1
+    WorkingDirectory=/path/to/mlCloudDetect
+    ExecStart=/path/to/mlCloudDetect/.venv/bin/python /path/to/mlCloudDetect/mlCloudDetect.py
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+
+Then use the following commands to enable and run your service.
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable mlCloudDetect
+    sudo systemctl start mlCloudDetect
+
+Ensure your service is running as follows:
+    sudo systemctl status mlCloudDetect
+
 ## Running mlCloudDetect under Windows 
 If you don't want to run mlCloudDetect under Python directly there is a Windows version as an exe file created under PyInstaller that incorporates these requirements, so if that works for you please download the exe file from:
 
