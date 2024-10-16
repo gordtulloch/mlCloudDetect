@@ -67,7 +67,7 @@ To update your installation please do the following:
 A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
 
 ## Running as a service under Linux
-The `systemctl --user` configuration files are typically located in the user's home directory under the `.config/systemd/user` directory. Create a new service file in this directory. For example, to create a service named `my_service.service`, you would create a file at `~/.config/systemd/user/my_service.service`. This setup allows you to manage user-specific services without requiring root privileges.
+This setup allows you to manage user-specific services without requiring root privileges.
 
 To run mlCloudDetect as a service under a Debian style Linux:
 
