@@ -71,24 +71,10 @@ This setup allows you to manage user-specific services without requiring root pr
 
 To run mlCloudDetect as a service under a Debian style Linux:
 
-    nano ~/.config/systemd/user/mlCloudDetect.service
+    mkdir -p ~/.config/systemd/user/
+    cp mlCloudDetect.service ~/.config/systemd/user/
 
-Enter the following into this file:
-
-    [Unit]
-    Description=mlCloudDetect Service
-    After=network.target
-
-    [Service]
-    User=your_username
-    Group=your_groupname
-    Environment=PYTHONUNBUFFERED=1
-    WorkingDirectory=/path/to/mlCloudDetect
-    ExecStart=/path/to/mlCloudDetect/.venv/bin/python /path/to/mlCloudDetect/mlCloudDetect.py
-    Restart=always
-
-    [Install]
-    WantedBy=multi-user.target
+Enter the file to set the path to your mlCloudDetect install correctly.
 
 Then use the following commands to enable and run your service.
 
