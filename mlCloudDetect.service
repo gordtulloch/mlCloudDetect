@@ -1,6 +1,6 @@
 [Unit]
 Description=mlCloudDetect Service
-After=network.target
+After=default.target
 
 [Service]
 User=your_username
