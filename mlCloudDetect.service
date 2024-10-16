@@ -2,8 +2,6 @@
 Description=mlCloudDetect Service
 
 [Service]
-User=your_username
-Group=your_groupname
 Environment=PYTHONUNBUFFERED=1
 WorkingDirectory=/home/gtulloch/mlCloudDetect
 ExecStart=/home/gtulloch/mlCloudDetect/.venv/bin/python /home/gtulloch/mlCloudDetect/mlCloudDetect.py

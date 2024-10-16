@@ -1,0 +1,12 @@
+[0;1;31m×[0m mlCloudDetect.service - mlCloudDetect Service
+     Loaded: loaded (]8;;file://WS-GORDT-MINI-S/home/gtulloch/.config/systemd/user/mlCloudDetect.service/home/gtulloch/.config/systemd/user/mlCloudDetect.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Wed 2024-10-16 11:08:03 CDT; 9s ago
+   Duration: 658us
+    Process: 131616 ExecStart=/home/gtulloch/mlCloudDetect/.venv/bin/python /home/gtulloch/mlCloudDetect/mlCloudDetect.py [0;1;31m(code=exited, status=216/GROUP)[0m
+   Main PID: 131616 (code=exited, status=216/GROUP)
+        CPU: 0
+
+Oct 16 11:08:03 WS-GORDT-MINI-S systemd[1875]: mlCloudDetect.service: Scheduled restart job, restart counter is at 5.
+Oct 16 11:08:03 WS-GORDT-MINI-S systemd[1875]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmlCloudDetect.service: Start request repeated too quickly.[0m
+Oct 16 11:08:03 WS-GORDT-MINI-S systemd[1875]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmlCloudDetect.service: Failed with result 'exit-code'.[0m
+Oct 16 11:08:03 WS-GORDT-MINI-S systemd[1875]: [0;1;31m[0;1;39m[0;1;31mFailed to start mlCloudDetect.service - mlCloudDetect Service.[0m
