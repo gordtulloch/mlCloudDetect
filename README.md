@@ -38,7 +38,7 @@ The mlCloudDetect.ini file supports the following parameters:
 | KERASMODEL | mlCloudDetect.keras | Model file to use (download from Teachable Machine) |
 | KERASLABEL | labels.txt | Labels file for the model (download from Teachable Machine) |
 | DAYTIME| -12 | Altitude that the sun has to be at to be full night |
-| STATUSFILE | roofStatus.txt'| File to output |
+| STATUSFILE | roofStatus.txt | File to output |
 | ALLSKYSAMPLING |True | Whether to save occasional allsky camera frames|
 | ALLSKYSAMPLEDIR | home/gtulloch/allskyimages | Where to save the sampled images |
 | ALLSKYSAMPLERATE | 10 | How often to save images (every n frames) |
