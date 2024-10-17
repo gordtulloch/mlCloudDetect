@@ -38,6 +38,16 @@ The mlCloudDetect.ini file supports the following parameters:
 | KERASMODEL | mlCloudDetect.keras | Model file to use (download from Teachable Machine) |
 | KERASLABEL | labels.txt | Labels file for the model (download from Teachable Machine) |
 | DAYTIME| -12 | Altitude that the sun has to be at to be full night |
+| STATUSFILE | roofStatus.txt'| File to output |
+| ALLSKYSAMPLING |True | Whether to save occasional allsky camera frames|
+| ALLSKYSAMPLEDIR | home/gtulloch/allskyimages | Where to save the sampled images |
+| ALLSKYSAMPLERATE | 10 | How often to save images (every n frames) |
+| ENABLE_MQTT | False | Whether to enable MQTT (Still in development) |
+| MQTT_BROKER | localhost | MQTT Broker address |
+| MQTT_PORT | 1883 | MQTT Broker port |
+| MQTT_TOPIC | Astronomy/Clouds | MQTT Topic to publish to | 
+| MQTT_USER | mlcloud | MQTT User |
+| MQTT_PASS | password | MQTT Password |
 
 ## Installation in Python
 To install and run mlCloudDetect in Python, create a Python virtual environment (to avoid various package conflicts) and run the application from a terminal window.
