@@ -77,11 +77,7 @@ To update your installation please do the following:
 A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
 
 ## Sending results to HomeAssistant through MQTT
-You can send the cloud status to Home Assistant as follows:
-
-1. Set up an MQTT broker in Home Assistant via Integration Entities
-2. 
-3. Change the mlCloudDetect.ini file to enable MQTT and set server, port appropriately.
+Not currently implemented stay tuned!
 
 ## Running as a service under Linux
 This setup allows you to manage user-specific services without requiring root privileges.
