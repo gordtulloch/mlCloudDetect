@@ -7,6 +7,7 @@ import sqlite3
 import shutil
 import os
 import datetime
+import paho.mqtt.client as mqtt
 
 from mcpConfig import McpConfig
 config=McpConfig()
@@ -36,9 +37,16 @@ class McpClouds(object):
                 if not os.path.exists(self.config.get("ALLSKYSAMPLEDIR")+"/"+className):
                     os.makedirs(self.config.get("ALLSKYSAMPLEDIR")+"/"+className)
             self.imageCount=1
+            if self.config.get("MQTT_ENABLE") == "True":
+                logger.info('Enabling MQTT')
+                try:
+                    self.mqttClient = mqtt.Client()
+                    self.mqttClient.connect(self.config.get("MQTT_BROKER"), int(self.config.get("MQTT_PORT")), 60)
+                    self.mqttClient.loop_start()
+                except Exception as e:
+                    logger.error('Error connecting to MQTT: %s', e)
 
     def isCloudy(self):
-        
         if (self.config.get("ALLSKYCAM") == "NONE"):
             logger.error('No allsky camera for cloud detection')
             print('ERROR: No allsky camera for cloud detection, exiting')
@@ -65,8 +73,16 @@ class McpClouds(object):
                 image_file = config.get("ALLSKYFILE")
         logger.info('Loading image: %s', image_file)
         
-        result=self.detect(image_file)
+        result=self.detect(image_file).replace('\n', '')
 
+        # Publish to MQTT if enabled
+        if self.config.get("MQTT_ENABLE") == "True":
+            logger.info('Publishing to MQTT')
+            try:
+                self.mqttClient.publish(self.config.get("MQTT_TOPIC"), result)
+            except Exception as e:
+                logger.error('Error publishing to MQTT: %s', e)
+                
         # If allskysampling turned on save a copy of the image if count = allskysamplerate
         if self.config.get("ALLSKYSAMPLING") == "True":
             logging.info('Sampling image count ' + str(self.imageCount))
@@ -77,14 +93,14 @@ class McpClouds(object):
                 date_str = current_datetime.strftime("%Y%m%d_%H%M%S")
                 # Create a filename with the current date
                 filename = f"image_{date_str}.jpg"
-                destination_path = self.config.get('ALLSKYSAMPLEDIR')+"/"+result.replace('\n', '')+"/"+filename
+                destination_path = self.config.get('ALLSKYSAMPLEDIR')+"/"+result+"/"+filename
                 shutil.copy(image_file, destination_path)
                 logging.info(f"Copying {image_file} to {destination_path}")
                 self.imageCount = 1
             else:
                 self.imageCount += 1    
 
-        return (result.replace('\n', '') != 'Clear',result.replace('\n', ''))
+        return (result != 'Clear',result)
 
     def detect(self, imagePath):
          # Load the labels

@@ -33,6 +33,12 @@ class McpConfig():
                 'ALLSKYSAMPLING': "True",               # Whether to sample the allsky camera
                 'ALLSKYSAMPLEDIR': '/home/gtulloch/allskyimages',      # Where to save the sampled images
                 'ALLSKYSAMPLERATE': '10',                 # How often to save images
+                'ENABLE_MQTT'   : 'False',               # Whether to enable MQTT
+                'MQTT_BROKER'   : 'localhost',           # MQTT Broker address
+                'MQTT_PORT'     : '1883',                # MQTT Broker port
+                'MQTT_TOPIC'    : 'Astronomy/Clouds',    # MQTT Topic to publish to
+                'MQTT_USER'     : 'mlcloud',             # MQTT User
+                'MQTT_PASS'     : 'password',            # MQTT Password
             }
             with open(self.file_path, 'w') as configfile:
                 self.config.write(configfile)
