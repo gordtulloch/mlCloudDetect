@@ -103,7 +103,6 @@ also required:
 ## Release Log
 1.0.2   Minor Upgrade Release
 * Add support for running as a Linux service
-* Add MQTT Support to update HomeAssistant
 
 1.0.1   Minor Upgrade Release 
 * Reverts to Keras V2 files produced by TeachableMachine to simplify model production
