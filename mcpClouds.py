@@ -37,14 +37,6 @@ class McpClouds(object):
                 if not os.path.exists(self.config.get("ALLSKYSAMPLEDIR")+"/"+className):
                     os.makedirs(self.config.get("ALLSKYSAMPLEDIR")+"/"+className)
             self.imageCount=1
-            if self.config.get("MQTT_ENABLE") == "True":
-                logger.info('Enabling MQTT')
-                try:
-                    self.mqttClient = mqtt.Client()
-                    self.mqttClient.connect(self.config.get("MQTT_BROKER"), int(self.config.get("MQTT_PORT")), 60)
-                    self.mqttClient.loop_start()
-                except Exception as e:
-                    logger.error('Error connecting to MQTT: %s', e)
 
     def isCloudy(self):
         if (self.config.get("ALLSKYCAM") == "NONE"):
@@ -75,14 +67,7 @@ class McpClouds(object):
         
         result=self.detect(image_file).replace('\n', '')
 
-        # Publish to MQTT if enabled
-        if self.config.get("MQTT_ENABLE") == "True":
-            logger.info('Publishing to MQTT')
-            try:
-                self.mqttClient.publish(self.config.get("MQTT_TOPIC"), result)
-            except Exception as e:
-                logger.error('Error publishing to MQTT: %s', e)
-                
+              
         # If allskysampling turned on save a copy of the image if count = allskysamplerate
         if self.config.get("ALLSKYSAMPLING") == "True":
             logging.info('Sampling image count ' + str(self.imageCount))

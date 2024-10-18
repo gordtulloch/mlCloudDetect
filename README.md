@@ -42,12 +42,6 @@ The mlCloudDetect.ini file supports the following parameters:
 | ALLSKYSAMPLING |True | Whether to save occasional allsky camera frames|
 | ALLSKYSAMPLEDIR | home/gtulloch/allskyimages | Where to save the sampled images |
 | ALLSKYSAMPLERATE | 10 | How often to save images (every n frames) |
-| ENABLE_MQTT | False | Whether to enable MQTT (Still in development) |
-| MQTT_BROKER | localhost | MQTT Broker address |
-| MQTT_PORT | 1883 | MQTT Broker port |
-| MQTT_TOPIC | Astronomy/Clouds | MQTT Topic to publish to | 
-| MQTT_USER | mlcloud | MQTT User |
-| MQTT_PASS | password | MQTT Password |
 
 ## Installation in Python
 To install and run mlCloudDetect in Python, create a Python virtual environment (to avoid various package conflicts) and run the application from a terminal window.
@@ -58,8 +52,8 @@ The following instructions are for Ubuntu. You may need to adjust the package na
     sudo apt --assume-yes install python3.10 python3.10-venv 
     git clone https://github.com/gordtulloch/mlCloudDetect.git
     cd mlCloudDetect
-    python3.10 -m venv .venv             #
-    source .venv/bin/activate        # in Linux, do this every time you run the program to set up the virtual environment
+    python3.10 -m venv .venv 
+    source .venv/bin/activate
     pip3 install -r requirements.txt
     python3 mlCloudDetect.py
 
@@ -75,9 +69,6 @@ To update your installation please do the following:
     pip3 install -r requirements.txt 
 
 A new ini file will be created with defaults (including any new items) so you will need to re-edit the file to set your correct values.
-
-## Sending results to HomeAssistant through MQTT
-Not currently implemented stay tuned!
 
 ## Running as a service under Linux
 This setup allows you to manage user-specific services without requiring root privileges.
