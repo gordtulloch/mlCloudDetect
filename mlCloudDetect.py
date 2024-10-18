@@ -55,13 +55,13 @@ roofStatus="UNKNOWN"
 while True:
 	# If the sun is up don't bother
 	date = datetime.datetime.now(datetime.timezone.utc)
-	'''if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
+	if (get_altitude(latitude, longitude, date) > int(config.get("DAYTIME"))):
 		logger.info("Daytime skipping")
 		f = open(roofStatusFile,"w")	
 		f.write("Daytime")
 		f.close()
 		time.sleep(300)
-		continue'''
+		continue
 	
 	# Call the clouds object to determine if it's cloudy
 	result,text=clouds.isCloudy()
