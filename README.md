@@ -14,8 +14,8 @@ Please see the article at https://openastronomy.substack.com/p/detecting-clouds-
 The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
 
 Keras V2 sample model
-* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gpkrZ6V8ClufWd65ag?e=6ceU2D
-* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gpkqWh7NvAPiLv1jCA?e=UafpZ7
+* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gpkw5jJx6PxWMKyU0A?e=EI8HKB
+* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gpkvcaCE3Bd_3ebYRA?e=lCADVp
 
 I suggest that you create your own version of this file as soon as you can since I have trained the model based on images from my Bortle 8 sky, and you will likely have a different sky than mine. See the article above on training your own model with TeachableMachine.
 
@@ -97,9 +97,9 @@ Version 1.0.1
 mlCloudDetect.1.0.1.exe [https://1drv.ms/u/s!AuTKPznBac46gpkthDp0epvXJUWhbA?e=XkSxLn]
 
 also required:
-* keras_model.h5 [https://1drv.ms/u/s!AuTKPznBac46gpkrZ6V8ClufWd65ag?e=6ceU2D]
-* labels.txt     [https://1drv.ms/t/s!AuTKPznBac46gpkqWh7NvAPiLv1jCA?e=UafpZ7]
-
+* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gpkw5jJx6PxWMKyU0A?e=EI8HKB
+* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gpkvcaCE3Bd_3ebYRA?e=lCADVp
+* 
 ## Release Log
 1.0.2   Minor Upgrade Release
 * Add support for running as a Linux service
