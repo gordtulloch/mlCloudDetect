@@ -73,7 +73,7 @@ A new ini file will be created with defaults (including any new items) so you wi
 ## Running as a service under Linux
 This setup allows you to manage user-specific services without requiring root privileges.
 
-To run mlCloudDetect as a service under a Debian style Linux:
+To run mlCloudDetect as a service under a Debian style Linux first edit the mlCloudDetect.service file to where the files are located then:
 
     mkdir -p ~/.config/systemd/user/
     cp mlCloudDetect.service ~/.config/systemd/user/
