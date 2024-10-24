@@ -11,6 +11,9 @@ labels.txt
 *.jpg
 *.config
 
+# Stuff not complete
+misc/
+
 # C extensions
 *.so
 
