@@ -10,35 +10,6 @@ Releases:
 
 Please see the article at https://openastronomy.substack.com/p/detecting-clouds-with-machine-learning for basic operation and how to create a keras V2 model for your observatory. The primary purpose of the script is to inform weather watcher software whether it's safe and useful to open the observatory roof and commence observations. Note that using the method in this article produces Keras V2 files so you need V0.9.0 of mlCloudDetect.
 
-## Cloud detection model
-The mlCloudDetect program requires a Keras format model file to operate. A starter version of this file can be downloaded from the following OneDrive store (it's too big to put on Github)
+See the Wiki for complete documentation.
 
-Keras V2 sample model
-* keras_model.h5           https://1drv.ms/u/s!AuTKPznBac46gpkw5jJx6PxWMKyU0A?e=EI8HKB
-* labels.txt               https://1drv.ms/t/s!AuTKPznBac46gpkvcaCE3Bd_3ebYRA?e=lCADVp
 
-I suggest that you create your own version of this file as soon as you can since I have trained the model based on images from my Bortle 8 sky, and you will likely have a different sky than mine. See the article above on training your own model with TeachableMachine.
-
-## INI File Parameters
-The mlCloudDetect.ini file supports the following parameters:
-
-| Parameter | Default | Description |
-|-----------|--------------------------------------------------------|---------------------------------------------------------------------|
-| LATITUDE | 49.8954 | Latitude of observer |
-| LONGITUDE | -97.1385 | Longitude of observer (negative if West) |
-| ALLSKYCAM | INDI-ALLSKY | What kind of allskycam - choice are NONE,INDI-ALLSKY or something else (e.g. TJ) |
-| ALLSKYCAMNO | 1 | Determines what camera to pull the latest image from in indi-allsky |
-| ALLSKYFILE | /var/www/html/allsky/images/latest.jpg | What the latest file is called (in non-indi-allsky) |
-| PENDING | 10 | How long you want to wait to transition between open and closed (in minutes) |
-| TRAINFOLDER | /home/stellarmate/allskycam | Folder where training files are |
-| CLEARMSG | Roof Open | Message to output when no clouds |
-| CLOUDMSG | Roof Closed | Message to output when cloudy |
-| CLOUDPENDINGMSG | Close Pending | Message to output when cloud detected but roof open |
-| CLEARPENDINGMSG | Open Pending | Message to output when clear sky detected but roof closed |
-| KERASMODEL | mlCloudDetect.keras | Model file to use (download from Teachable Machine) |
-| KERASLABEL | labels.txt | Labels file for the model (download from Teachable Machine) |
-| DAYTIME| -12 | Altitude that the sun has to be at to be full night |
-| STATUSFILE | roofStatus.txt | File to output |
-| ALLSKYSAMPLING |True | Whether to save occasional allsky camera frames|
-| ALLSKYSAMPLEDIR | home/gtulloch/allskyimages | Where to save the sampled images |
-| ALLSKYSAMPLERATE | 10 | How often to save images (every n frames) |
